@@ -1,7 +1,7 @@
 FROM openjdk:17-slim as builder
 WORKDIR application
-ADD target/KBE-Rest-Brewery-0.0.1-SNAPSHOT.jar ./
-RUN java -Djarmode=layertools -jar KBE-Rest-Brewery-0.0.1-SNAPSHOT.jar extract
+ADD maven/${project.build.finalName}.jar ./
+RUN java -Djarmode=layertools -jar ${project.build.finalName}.jar extract
 
 FROM openjdk:17-slim
 
